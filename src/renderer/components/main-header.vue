@@ -34,7 +34,7 @@ export default {
 .my-header {
   overflow: hidden;
   -webkit-app-region: drag;
-  background: rgb(253, 56, 30);
+  background: #515a6e;
   .my-header-title {
     float: left;
     margin-left: 5px;
