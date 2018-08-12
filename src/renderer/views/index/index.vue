@@ -2,9 +2,9 @@
   <div class="my-container-box">
     <div v-for="(item, index) in pick"
          :key="index"
-         :class="[item.active ? 'my-item': 'my-item-active']"
-         @click="handleSelect(item.title)">
-      <div class="my-item-font">
+         :class="[item.active ? 'my-item': 'my-item-active']">
+      <div class="my-item-font"
+           @click="handleSelect(item.title)">
         <i :class="['iconfont', item.icon]"></i>
         <p v-if="item.active">{{item.title}}</p>
       </div>

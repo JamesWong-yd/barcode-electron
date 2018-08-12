@@ -7,7 +7,7 @@
     <div class="my-header-btn">
       <Icon type="md-remove" 
             @click="$electron.ipcRenderer.send('minWindow')" />
-      <Icon :type=" isWindow ? 'md-square-outline':'ios-browsers-outline'"
+      <Icon :type=" !isWindow ? 'md-square-outline':'ios-browsers-outline'"
             size="16"
             @click="changWindow" />
       <Icon type="md-close"

@@ -22,7 +22,7 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "electron",
+    "productName": "zvaleTools",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
@@ -58,6 +58,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "iview": "^3.0.0",
+    "jsbarcode": "^3.9.0",
     "less": "^3.8.0",
     "less-loader": "^4.1.0",
     "qrcodejs2": "0.0.2",

@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <main-header>ZVALE-Tools</main-header>
+    <main-header class="main-header">ZVALE-Tools</main-header>
     <router-view class="my-container" :style="{height: mainheight + 'px'}"></router-view>
   </div>
 </template>
@@ -27,6 +27,10 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+.main-header{
+  position: relative;
+  z-index: 1000;
+}
 .my-container {
   overflow-y: auto;
 }
