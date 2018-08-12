@@ -2,13 +2,14 @@
   <div class="barcode-box">
     <div class="barcode-box-item" v-for="(item, index) in code" :key="index">
       <canvas class="barcodeitem"
-              :class="'barcodeitem'+index"
-              :style="scale"></canvas>
+           :id="'barcodeitem'+index"
+           :style="scale"></canvas>
+      <p>{{item}}</p>
     </div>
   </div>
 </template>
 <script>
-import Jsbarcode from 'jsbarcode'
+import Qrcode from 'qrcode'
 export default {
   name: 'mainbarcode',
   props: {
@@ -21,16 +22,7 @@ export default {
   },
   data() {
     return {
-      barcodeBoxHeight: '',
-      code: [],
-      options: {
-        format: 'CODE128',
-        width: 2,
-        height: 100,
-        textMargin: 0,
-        fontSize: 20,
-        lineColor: '#17233d'
-      }
+      code: []
     }
   },
   created() {
@@ -49,7 +41,14 @@ export default {
       )
       this.code.map((item, index) => {
         this.$nextTick(() => {
-          Jsbarcode('.barcodeitem' + index, item, this.options)
+          Qrcode.toCanvas(
+            document.getElementById('barcodeitem' + index),
+            item,
+            function(error) {
+              if (error) console.error(error)
+              console.log('success!')
+            }
+          )
         })
       })
     }
@@ -66,9 +65,7 @@ export default {
     barcodeLength() {
       this.init()
     },
-    scalecomputed() {
-      // this.init()
-    }
+    scalecomputed() {}
   }
 }
 </script>
@@ -80,12 +77,17 @@ export default {
   .barcode-box-item {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     margin: 20px;
     flex-grow: 1;
     .barcodeitem {
+      margin: 0 auto;
       width: 260px;
       height: 100px;
       transition: all 1s;
+    }
+    p {
+      text-align: center;
     }
   }
 }
